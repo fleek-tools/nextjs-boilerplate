@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js + Fleek Starter Kit
 
-## Getting Started
+## 🚀 Project Structure
 
-First, run the development server:
+Inside of your Next.js project, you'll see the following folders and files:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   └── app/
+│       ├── favicon.ico
+│       ├── globals.css
+│       ├── layout.tsx
+│       └── page.tsx
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you want to lern more about the `app` router you can checkout [Next.js documentation](https://nextjs.org/docs/app/building-your-application/routing#the-app-directory).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Any static assets, like images, can be placed in the `public/` directory.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## 🧞 Commands
 
-To learn more about Next.js, take a look at the following resources:
+All commands are run from the root of the project, from a terminal:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `pnpm install`          | Installs dependencies                            |
+| `pnpm run dev`          | Starts local dev server at `localhost:3000`      |
+| `pnpm run build`        | Build your production site to `./out/`          |
+| `pnpm run start`      | Preview your build locally, before deploying     |
+| `pnpm run lint ...`    | Run Linter |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ⚡ How to deploy to Fleek
 
-## Deploy on Vercel
+### 1. Create a `fleek.json` config file:
+You can configure this site deployment using [Fleek CLI]() and running:
+```
+ > fleek sites init
+   WARN! Fleek CLI is in beta phase, use it under your own responsibility
+   ? Choose one of the existing sites or create a new one. › 
+   ❯ Create a new site
+```
+It will prompt you for a `name`, `dist` directory location & `build command`
+- `name`: How you want to name the site
+- `dist`: The output directory where the site is located, for this template it's `out`
+- `build command`: Command to build your site, this will be used to deploy the latest version either by CLI or Github Actions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Deploy the site
+After configuiring your `fleek.json` file, you can deployt the site by running
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+fleek sites deploy
+```
+After running it you will get an output like this:
+```
+ WARN! Fleek CLI is in beta, use it at your own discretion
+ > Success! Deployed!
+ > Site IPFS CID: QmP1nDyoHqSrRabwUSrxRV3DJqiKH7b9t1tpLcr1NTkm1M
+
+ > You can visit through the gateway:
+ > https://ipfs.io/ipfs/QmP1nDyoHqSrRabwUSrxRV3DJqiKH7b9t1tpLcr1NTkm1M
+ ```
+
+### Extra features
+- **Continuous Integration (CI):** `fleek sites ci` [Documentation.](https://docs.fleek.xyz/services/sites/#continuous-integration-ci)
+- **Adding custom domains:** `fleek domains create` [Documentation.](https://docs.fleek.xyz/services/domains/)
+
+
+### Keep in mind:
+
+This template has been configured to produce a static output.
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',  
+}
+
+module.exports = nextConfig
+
+```
+
+You can find more information about static builds in [Next Documentation](https://nextjs.org/docs/app/building-your-application/deploying/static-exports#configuration)
+
+
+## 👀 Want to learn more?
+
+Feel free to check [Next.js documentation](https://nextjs.org/docs) or jump into Next.js [learning platform](https://nextjs.org/learn/foundations/about-nextjs?utm_source=next-site&utm_medium=nav-cta&utm_campaign=next-website).
