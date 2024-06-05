@@ -1,4 +1,6 @@
 # Next.js + Fleek Starter Kit
+![Next js Boilerplate](https://github.com/fleek-tools/nextjs-template/assets/74613246/22471d74-1cfa-4645-a9cf-d1c15a6c45b2)
+
 
 ## 🚀 Project Structure
 
